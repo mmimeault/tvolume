@@ -1,6 +1,6 @@
 # TVolume
 
-![Screenshot](http://i.imgur.com/7Hig57K.png)
+![Screenshot](http://i.imgur.com/2fmdRkz.png)
 
 Small app to help with hotkey access to windows mixer control app's volume.
 
