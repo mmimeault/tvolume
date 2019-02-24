@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSCore.CoreAudioAPI;
 
@@ -16,9 +10,10 @@ namespace SetPUBVolume
         public Form1()
         {
             InitializeComponent();
+            InitialiseShortcutSelector();
 
 
-            // bind hotkey
+            // bind default hotkey
             Program.gkh.HookedKeys.Add(Keys.F1);
 
             // hook functions
@@ -27,6 +22,21 @@ namespace SetPUBVolume
             if(!Program.gkh.isHooked())
                 Program.gkh.hook();
         }
+
+        private void InitialiseShortcutSelector()
+        {
+            var AvailableKeys = new List<Keys>();
+            var currentKey = Keys.F1;
+            while (currentKey != Keys.F24)
+            {
+                AvailableKeys.Add(currentKey);
+                
+                currentKey++;
+            }
+
+            cmbShortcut.DataSource = AvailableKeys;
+        }
+
 
         void keyDown(object sender, KeyEventArgs e)
         {
@@ -107,6 +117,21 @@ namespace SetPUBVolume
         {
             // unhook the hotkey
             Program.gkh.unhook();
+        }
+
+        private void cmbShortcut_DisplayMemberChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbShortcut_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Program.gkh.unhook();
+            Program.gkh.HookedKeys.Clear();
+            Program.gkh.HookedKeys.Add((Keys)cmbShortcut.SelectedItem);
+
+            if (!Program.gkh.isHooked())
+                Program.gkh.hook();
         }
     }
 }
