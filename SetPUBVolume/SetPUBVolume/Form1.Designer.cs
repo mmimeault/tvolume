@@ -36,25 +36,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.processName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cmbShortcut = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // volumeA
             // 
-            this.volumeA.Location = new System.Drawing.Point(129, 54);
+            this.volumeA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.volumeA.Location = new System.Drawing.Point(129, 64);
             this.volumeA.MaxLength = 3;
             this.volumeA.Name = "volumeA";
-            this.volumeA.Size = new System.Drawing.Size(135, 20);
+            this.volumeA.Size = new System.Drawing.Size(50, 20);
             this.volumeA.TabIndex = 0;
             this.volumeA.Text = "100";
             this.volumeA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // volumeB
             // 
-            this.volumeB.Location = new System.Drawing.Point(129, 80);
+            this.volumeB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.volumeB.Location = new System.Drawing.Point(129, 89);
             this.volumeB.MaxLength = 3;
             this.volumeB.Name = "volumeB";
-            this.volumeB.Size = new System.Drawing.Size(135, 20);
+            this.volumeB.Size = new System.Drawing.Size(50, 20);
             this.volumeB.TabIndex = 1;
             this.volumeB.Text = "25";
             this.volumeB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -62,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 57);
+            this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 2;
@@ -71,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 83);
+            this.label2.Location = new System.Drawing.Point(12, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
@@ -80,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 31);
+            this.label3.Location = new System.Drawing.Point(12, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 4;
@@ -88,7 +90,8 @@
             // 
             // processName
             // 
-            this.processName.Location = new System.Drawing.Point(129, 28);
+            this.processName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.processName.Location = new System.Drawing.Point(129, 37);
             this.processName.Name = "processName";
             this.processName.Size = new System.Drawing.Size(135, 20);
             this.processName.TabIndex = 5;
@@ -97,27 +100,33 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Location = new System.Drawing.Point(12, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Keyboard Shortcut";
             // 
-            // label5
+            // cmbShortcut
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(126, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "F1";
+            this.cmbShortcut.AccessibleDescription = "Key to use as shortcut";
+            this.cmbShortcut.AccessibleName = "Keyboard Shorcut";
+            this.cmbShortcut.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.cmbShortcut.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbShortcut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbShortcut.FormattingEnabled = true;
+            this.cmbShortcut.Location = new System.Drawing.Point(129, 10);
+            this.cmbShortcut.Name = "cmbShortcut";
+            this.cmbShortcut.Size = new System.Drawing.Size(50, 21);
+            this.cmbShortcut.TabIndex = 8;
+            this.cmbShortcut.SelectedValueChanged += new System.EventHandler(this.cmbShortcut_SelectedValueChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 115);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbShortcut);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.processName);
             this.Controls.Add(this.label3);
@@ -128,7 +137,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "TVolume - by loosik";
+            this.Text = "TVolume";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,7 +153,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox processName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbShortcut;
     }
 }
 
