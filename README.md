@@ -1,6 +1,6 @@
 # TVolume
 
-![Screenshot](http://i.imgur.com/2fmdRkz.png)
+![Screenshot]https://i.imgur.com/r6CtEQg.png)
 
 Small app to help with hotkey access to windows mixer control app's volume.
 
@@ -13,4 +13,5 @@ Edit Process Name field in case you want to control separate application, then y
 Project was compiled using Visual Studio 2015, .NET Framework 4.5.2 & [CSCore](https://github.com/filoe/cscore) library.
 
 Initially created by LooSik (https://github.com/LooSik/tvolume)
+
 Forked to add user definable shortcut key selection by PJ (http://gitub.com/pjbarry/tvolume)
