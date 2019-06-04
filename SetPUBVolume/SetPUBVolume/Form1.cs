@@ -21,6 +21,10 @@ namespace SetPUBVolume
 
             if(!Program.gkh.isHooked())
                 Program.gkh.hook();
+
+            cmbShortcut.SelectedIndex = 2;
+            volumeA.Text = "75";
+            volumeB.Text = "15";
         }
 
         private void InitialiseShortcutSelector()
