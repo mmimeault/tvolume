@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CSCore.CoreAudioAPI;
+using System.Configuration;
 
 namespace SetPUBVolume
 {
@@ -10,8 +11,9 @@ namespace SetPUBVolume
         public Form1()
         {
             InitializeComponent();
-            InitialiseShortcutSelector();
+            var lastKeyUsed = Properties.Settings.Default.LastKeyUsed;
 
+            InitialiseShortcutSelector();
 
             // bind default hotkey
             Program.gkh.HookedKeys.Add(Keys.F1);
@@ -22,7 +24,7 @@ namespace SetPUBVolume
             if(!Program.gkh.isHooked())
                 Program.gkh.hook();
 
-            cmbShortcut.SelectedIndex = 2;
+            cmbShortcut.SelectedIndex = lastKeyUsed;
             volumeA.Text = "75";
             volumeB.Text = "15";
         }
@@ -121,6 +123,7 @@ namespace SetPUBVolume
         {
             // unhook the hotkey
             Program.gkh.unhook();
+            Properties.Settings.Default.Save();
         }
 
         private void cmbShortcut_DisplayMemberChanged(object sender, EventArgs e)
@@ -136,6 +139,9 @@ namespace SetPUBVolume
 
             if (!Program.gkh.isHooked())
                 Program.gkh.hook();
+
+            Properties.Settings.Default.LastKeyUsed = cmbShortcut.SelectedIndex;
+            Properties.Settings.Default.Save();
         }
     }
 }
