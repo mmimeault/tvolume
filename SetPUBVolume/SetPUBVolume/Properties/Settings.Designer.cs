@@ -26,12 +26,24 @@ namespace SetPUBVolume.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LastKeyUsed {
+        public int LastProcessIndex {
             get {
-                return ((int)(this["LastKeyUsed"]));
+                return ((int)(this["LastProcessIndex"]));
             }
             set {
-                this["LastKeyUsed"] = value;
+                this["LastProcessIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Profiles {
+            get {
+                return ((string)(this["Profiles"]));
+            }
+            set {
+                this["Profiles"] = value;
             }
         }
     }

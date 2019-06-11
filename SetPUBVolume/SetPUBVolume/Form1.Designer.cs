@@ -37,12 +37,14 @@
             this.processName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbShortcut = new System.Windows.Forms.ComboBox();
+            this.cmbProcessName = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // volumeA
             // 
             this.volumeA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.volumeA.Location = new System.Drawing.Point(129, 64);
+            this.volumeA.Location = new System.Drawing.Point(129, 90);
             this.volumeA.MaxLength = 3;
             this.volumeA.Name = "volumeA";
             this.volumeA.Size = new System.Drawing.Size(50, 20);
@@ -53,7 +55,7 @@
             // volumeB
             // 
             this.volumeB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.volumeB.Location = new System.Drawing.Point(129, 89);
+            this.volumeB.Location = new System.Drawing.Point(129, 115);
             this.volumeB.MaxLength = 3;
             this.volumeB.Name = "volumeB";
             this.volumeB.Size = new System.Drawing.Size(50, 20);
@@ -64,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 67);
+            this.label1.Location = new System.Drawing.Point(12, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 2;
@@ -73,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 92);
+            this.label2.Location = new System.Drawing.Point(12, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 3;
@@ -91,11 +93,10 @@
             // processName
             // 
             this.processName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.processName.Location = new System.Drawing.Point(129, 37);
+            this.processName.Location = new System.Drawing.Point(129, 64);
             this.processName.Name = "processName";
             this.processName.Size = new System.Drawing.Size(135, 20);
             this.processName.TabIndex = 5;
-            this.processName.Text = "TslGame";
             // 
             // label4
             // 
@@ -121,11 +122,38 @@
             this.cmbShortcut.TabIndex = 8;
             this.cmbShortcut.SelectedValueChanged += new System.EventHandler(this.cmbShortcut_SelectedValueChanged);
             // 
+            // cmbProcessName
+            // 
+            this.cmbProcessName.AccessibleDescription = "Process name";
+            this.cmbProcessName.AccessibleName = "Process name";
+            this.cmbProcessName.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.cmbProcessName.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbProcessName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProcessName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProcessName.FormattingEnabled = true;
+            this.cmbProcessName.Location = new System.Drawing.Point(129, 37);
+            this.cmbProcessName.Name = "cmbProcessName";
+            this.cmbProcessName.Size = new System.Drawing.Size(135, 21);
+            this.cmbProcessName.TabIndex = 9;
+            this.cmbProcessName.SelectedValueChanged += new System.EventHandler(this.cmbProcessName_SelectedValueChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(129, 141);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Save  profile";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 115);
+            this.ClientSize = new System.Drawing.Size(276, 175);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmbProcessName);
             this.Controls.Add(this.cmbShortcut);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.processName);
@@ -154,6 +182,8 @@
         private System.Windows.Forms.TextBox processName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbShortcut;
+        private System.Windows.Forms.ComboBox cmbProcessName;
+        private System.Windows.Forms.Button button1;
     }
 }
 
