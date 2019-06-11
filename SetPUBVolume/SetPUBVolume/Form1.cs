@@ -47,15 +47,20 @@ namespace SetPUBVolume
             cmbShortcut.DataSource = AvailableKeys;
         }
 
-        private void InitialiseProcessSelector()
+        private int InitialiseProcessSelector()
         {
             var availableProcesses = new List<String>();
 
             availableProcesses.Add("Custom");
-            availableProcesses.Add("TslGame");
-            availableProcesses.Add("Overwatch");
+
+            foreach (string element in Properties.Settings.Default.Processes)
+            {
+                availableProcesses.Add(element);
+            }
 
             cmbProcessName.DataSource = availableProcesses;
+
+            return availableProcesses.Count;
         }
 
         private void InitialiseProfile()
@@ -148,7 +153,7 @@ namespace SetPUBVolume
         private void saveProfile()
         {
             var processName = getProcessName();
-
+            
             if (processName == null | processName.Length == 0)
             {
                 return;
@@ -163,17 +168,23 @@ namespace SetPUBVolume
                 profiles.profiles.Remove(processName);
             }
             profiles.profiles.Add(processName, gameProfile);
+
+            if (cmbProcessName.SelectedIndex == 0) {
+                var index = Properties.Settings.Default.Processes.Add(processName);
+                InitialiseProcessSelector();
+                cmbProcessName.SelectedIndex = index + 1;
+                txtProcessName.Clear();
+            }
         }
 
         private string getProcessName()
         {
             if (cmbProcessName.SelectedIndex == 0)
             {
-                return processName.Text;
+                return txtProcessName.Text;
             }
             return (String) cmbProcessName.SelectedValue;
         }
-
 
         public void setVolume()
         {

@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.processName = new System.Windows.Forms.TextBox();
+            this.txtProcessName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbShortcut = new System.Windows.Forms.ComboBox();
             this.cmbProcessName = new System.Windows.Forms.ComboBox();
@@ -90,13 +90,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Process Name";
             // 
-            // processName
+            // txtProcessName
             // 
-            this.processName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.processName.Location = new System.Drawing.Point(129, 64);
-            this.processName.Name = "processName";
-            this.processName.Size = new System.Drawing.Size(135, 20);
-            this.processName.TabIndex = 5;
+            this.txtProcessName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProcessName.Location = new System.Drawing.Point(129, 64);
+            this.txtProcessName.Name = "txtProcessName";
+            this.txtProcessName.Size = new System.Drawing.Size(135, 20);
+            this.txtProcessName.TabIndex = 5;
             // 
             // label4
             // 
@@ -156,7 +156,7 @@
             this.Controls.Add(this.cmbProcessName);
             this.Controls.Add(this.cmbShortcut);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.processName);
+            this.Controls.Add(this.txtProcessName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -179,7 +179,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox processName;
+        private System.Windows.Forms.TextBox txtProcessName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbShortcut;
         private System.Windows.Forms.ComboBox cmbProcessName;
