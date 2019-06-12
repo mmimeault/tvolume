@@ -124,6 +124,7 @@ namespace SetPUBVolume
         private void cmbProcessName_SelectedValueChanged(object sender, EventArgs e)
         {
             loadProfile();
+            txtProcessName.Visible = cmbProcessName.SelectedIndex == 0;
         }
 
 
