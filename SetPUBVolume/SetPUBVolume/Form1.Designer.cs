@@ -39,6 +39,8 @@
             this.cmbShortcut = new System.Windows.Forms.ComboBox();
             this.cmbProcessName = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtProcessFound = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // volumeA
@@ -84,16 +86,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 40);
+            this.label3.Location = new System.Drawing.Point(12, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Process Name";
+            this.label3.Text = "Processes Saved";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtProcessName
             // 
             this.txtProcessName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProcessName.Location = new System.Drawing.Point(129, 64);
+            this.txtProcessName.Location = new System.Drawing.Point(270, 12);
             this.txtProcessName.Name = "txtProcessName";
             this.txtProcessName.Size = new System.Drawing.Size(135, 20);
             this.txtProcessName.TabIndex = 5;
@@ -101,7 +104,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 13);
+            this.label4.Location = new System.Drawing.Point(12, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 6;
@@ -116,7 +119,7 @@
             this.cmbShortcut.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbShortcut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbShortcut.FormattingEnabled = true;
-            this.cmbShortcut.Location = new System.Drawing.Point(129, 10);
+            this.cmbShortcut.Location = new System.Drawing.Point(129, 63);
             this.cmbShortcut.Name = "cmbShortcut";
             this.cmbShortcut.Size = new System.Drawing.Size(50, 21);
             this.cmbShortcut.TabIndex = 8;
@@ -131,7 +134,7 @@
             this.cmbProcessName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProcessName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProcessName.FormattingEnabled = true;
-            this.cmbProcessName.Location = new System.Drawing.Point(129, 37);
+            this.cmbProcessName.Location = new System.Drawing.Point(129, 12);
             this.cmbProcessName.Name = "cmbProcessName";
             this.cmbProcessName.Size = new System.Drawing.Size(135, 21);
             this.cmbProcessName.TabIndex = 9;
@@ -139,7 +142,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(129, 141);
+            this.button1.Location = new System.Drawing.Point(270, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 10;
@@ -147,11 +150,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Process";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtProcessFound
+            // 
+            this.txtProcessFound.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtProcessFound.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProcessFound.Enabled = false;
+            this.txtProcessFound.Location = new System.Drawing.Point(129, 40);
+            this.txtProcessFound.Name = "txtProcessFound";
+            this.txtProcessFound.Size = new System.Drawing.Size(135, 20);
+            this.txtProcessFound.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 175);
+            this.ClientSize = new System.Drawing.Size(409, 140);
+            this.Controls.Add(this.txtProcessFound);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbProcessName);
             this.Controls.Add(this.cmbShortcut);
@@ -184,6 +209,8 @@
         private System.Windows.Forms.ComboBox cmbShortcut;
         private System.Windows.Forms.ComboBox cmbProcessName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtProcessFound;
     }
 }
 

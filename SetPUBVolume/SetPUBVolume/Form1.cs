@@ -4,12 +4,18 @@ using System.Windows.Forms;
 using CSCore.CoreAudioAPI;
 using System.Configuration;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using System;
+using System.Threading;
 
 namespace SetPUBVolume
 {
     public partial class Form1 : Form
     {
         private GameProfiles profiles;
+        private List<String> myAvailableProcesses = new List<String>();
+        private Thread thr;
+        private String lastProcessFound = null;
 
         public Form1()
         {
@@ -31,6 +37,74 @@ namespace SetPUBVolume
                 Program.gkh.hook();
 
             cmbProcessName.SelectedIndex = lastProcessIndex;
+
+            // Creating object of ExThread class 
+            //ExThread obj = new ExThread();
+
+            // Creating thread 
+            // Using thread class 
+            thr = new Thread(new ThreadStart(mythread1));
+            thr.Start();
+
+        }
+
+        public void mythread1()
+        {
+            while(true)
+            {
+                checkProcesses();
+                Thread.Sleep(2000);
+            }
+        }
+
+
+
+
+        delegate void SetTextCallback(string text);
+        private void checkProcesses()
+        {
+            Trace.WriteLine("Process");
+            String previous = lastProcessFound;
+
+            var allProcesses = Process.GetProcesses();
+            foreach (Process elem in allProcesses)
+            {
+                if (myAvailableProcesses.Contains(elem.ProcessName))
+                {
+                    Trace.WriteLine(elem);
+                    lastProcessFound = elem.ProcessName;
+                    break;
+                }
+            }
+
+            if (previous != lastProcessFound)
+            {
+                SetText(lastProcessFound);
+            }
+        }
+
+        private void SetText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.txtProcessFound.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                txtProcessFound.Text = lastProcessFound;
+                for (var i = 0; i < myAvailableProcesses.Count; i++)
+                {
+                    if (myAvailableProcesses[i] == lastProcessFound)
+                    {
+                        cmbProcessName.SelectedIndex = i + 1;
+                        break;
+                    }
+                }
+            }
         }
 
         private void InitialiseShortcutSelector()
@@ -56,6 +130,7 @@ namespace SetPUBVolume
             foreach (string element in Properties.Settings.Default.Processes)
             {
                 availableProcesses.Add(element);
+                myAvailableProcesses.Add(element);
             }
 
             cmbProcessName.DataSource = availableProcesses;
@@ -109,6 +184,9 @@ namespace SetPUBVolume
             Properties.Settings.Default.LastProcessIndex = cmbProcessName.SelectedIndex;
             Properties.Settings.Default.Profiles = JsonConvert.SerializeObject(profiles);
             Properties.Settings.Default.Save();
+
+            // Stop checking thread
+            thr.Abort();
         }
 
         private void cmbShortcut_SelectedValueChanged(object sender, EventArgs e)
@@ -234,6 +312,16 @@ namespace SetPUBVolume
                     }
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
