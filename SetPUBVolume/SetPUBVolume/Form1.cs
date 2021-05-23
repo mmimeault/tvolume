@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System;
 using System.Threading;
+using System.Diagnostics;
 
 namespace SetPUBVolume
 {
@@ -16,6 +17,8 @@ namespace SetPUBVolume
         private List<String> myAvailableProcesses = new List<String>();
         private Thread thr;
         private String lastProcessFound = null;
+
+        delegate void setTextCallback(string text);
 
         public Form1()
         {
@@ -45,7 +48,7 @@ namespace SetPUBVolume
             // Using thread class 
             thr = new Thread(new ThreadStart(mythread1));
             thr.Start();
-
+            Debug.WriteLine("Process");
         }
 
         public void mythread1()
@@ -58,9 +61,6 @@ namespace SetPUBVolume
         }
 
 
-
-
-        delegate void SetTextCallback(string text);
         private void checkProcesses()
         {
             Trace.WriteLine("Process");
@@ -69,6 +69,7 @@ namespace SetPUBVolume
             var allProcesses = Process.GetProcesses();
             foreach (Process elem in allProcesses)
             {
+                Trace.WriteLine("Processes " + myAvailableProcesses);
                 if (myAvailableProcesses.Contains(elem.ProcessName))
                 {
                     Trace.WriteLine(elem);
@@ -90,7 +91,7 @@ namespace SetPUBVolume
             // If these threads are different, it returns true.
             if (this.txtProcessFound.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(SetText);
+                setTextCallback d = new setTextCallback(SetText);
                 this.Invoke(d, new object[] { text });
             }
             else
@@ -98,6 +99,7 @@ namespace SetPUBVolume
                 txtProcessFound.Text = lastProcessFound;
                 for (var i = 0; i < myAvailableProcesses.Count; i++)
                 {
+                    Trace.WriteLine(myAvailableProcesses[i]);
                     if (myAvailableProcesses[i] == lastProcessFound)
                     {
                         cmbProcessName.SelectedIndex = i + 1;
@@ -124,6 +126,7 @@ namespace SetPUBVolume
         private int InitialiseProcessSelector()
         {
             var availableProcesses = new List<String>();
+            myAvailableProcesses.Clear();
 
             availableProcesses.Add("Custom");
 
